@@ -21,10 +21,15 @@ class App extends React.Component {
 
   addTodo = (todo) => {
     todo.id = Math.random();
-    let todos = [...this.state.todos, todo]
-    this.setState({
-      todos
-    })
+    if (todo.content.length === 0) {
+      alert('Todo cant be empty')
+    }
+    else {
+      let todos = [...this.state.todos, todo]
+      this.setState({
+        todos
+      })
+    }
   }
 
   render() {
