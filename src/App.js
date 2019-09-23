@@ -1,5 +1,6 @@
 import React from 'react';
-import Todos from './components/todos/todos';
+import Todos from './components/todos/Todos';
+import AddFom from './components/Form/AddForm';
 import '../src/app.css';
 class App extends React.Component {
   state = {
@@ -24,6 +25,8 @@ class App extends React.Component {
         <div className="container">
           <h1>To-Dos</h1>
           <Todos todos={this.state.todos} deleteTodo={this.deleteTodo} />
+
+          <AddFom />
         </div>
       </div>
     );
