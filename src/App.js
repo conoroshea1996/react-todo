@@ -1,5 +1,6 @@
 import React from 'react';
-import Todos from './components/todos'
+import Todos from './components/todos/todos';
+import '../src/app.css';
 class App extends React.Component {
   state = {
     todos: [
@@ -7,11 +8,17 @@ class App extends React.Component {
       { id: 2, content: 'Clean ceral bowl' }
     ]
   }
+
+  deleteTodo = (id) => {
+    console.log(id);
+  }
   render() {
     return (
       <div className="App" >
-        <h1>To-Dos</h1>
-        <Todos todos={this.state.todos} />
+        <div className="container">
+          <h1>To-Dos</h1>
+          <Todos todos={this.state.todos} deleteTodo={this.deleteTodo} />
+        </div>
       </div>
     );
   }
