@@ -5,8 +5,8 @@ import '../src/app.css';
 class App extends React.Component {
   state = {
     todos: [
-      { id: 1, content: 'Eat ceral' },
-      { id: 2, content: 'Clean ceral bowl' }
+      { id: 1, content: 'Eat ceral', done: false },
+      { id: 2, content: 'Clean ceral bowl', done: true }
     ]
   }
 
@@ -18,6 +18,7 @@ class App extends React.Component {
       todos
     })
   }
+
 
   addTodo = (todo) => {
     todo.id = Math.random();
@@ -32,12 +33,20 @@ class App extends React.Component {
     }
   }
 
+  toggleTodo = (id) => {
+    let todo = this.state.todos.find(todo => todo.id === id);
+    todo.done = !todo.done;
+    this.setState({
+      data: this.state.todos.map(el => (el.id === id ? { ...el, todo } : el))
+    });
+  }
+
   render() {
     return (
       <div className="App" >
         <div className="container">
           <h1>To-Dos</h1>
-          <Todos todos={this.state.todos} deleteTodo={this.deleteTodo} />
+          <Todos todos={this.state.todos} deleteTodo={this.deleteTodo} toggleTodo={this.toggleTodo} />
           <AddFom addTodo={this.addTodo} />
         </div>
       </div>
